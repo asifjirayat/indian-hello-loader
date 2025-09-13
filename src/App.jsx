@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import IndianHelloLoader from "./components/IndianHelloLoader.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [theme, setTheme] = useState("auto");
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1>Indian Hello Loader</h1>
 
-export default App
+      <div style={{ margin: "2rem 0" }}>
+        <button onClick={() => setTheme("auto")}>Auto (System)</button>
+        <button onClick={() => setTheme("light")}>Light Mode</button>
+        <button onClick={() => setTheme("dark")}>Dark Mode</button>
+      </div>
+
+      <IndianHelloLoader theme={theme} />
+    </div>
+  );
+};
+
+export default App;
