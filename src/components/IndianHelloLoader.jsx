@@ -25,7 +25,7 @@ const IndianHelloLoader = ({ theme = "auto" }) => {
     };
 
     updateText(); // Show first immediately
-    const interval = setInterval(updateText, 200);
+    const interval = setInterval(updateText, 400);
 
     return () => clearInterval(interval);
   }, []);
