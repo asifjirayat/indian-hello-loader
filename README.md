@@ -1,6 +1,6 @@
 # indian-hello-loader
 
-A lightweight, zero-configuration React component that displays “Hello” in 13+ Indian languages, with automatic light/dark theme support — perfect for loading screens, onboarding flows, or cultural UIs.
+A lightweight, zero-configuration React component that displays "Hello" in 13+ Indian languages, with automatic light/dark theme support — perfect for loading screens, onboarding flows, or cultural UIs.
 
 #### Live Demo: [https://indian-hello-loader.vercel.app/](https://indian-hello-loader.vercel.app/)
 
@@ -8,44 +8,64 @@ A lightweight, zero-configuration React component that displays “Hello” in 1
 
 <img src="https://raw.githubusercontent.com/asifjirayat/indian-hello-loader/main/src/assets/indian-hello-loader.gif" alt="Indian Hello Loader" width="400" />
 
-No CSS imports. No font setup. Just `<IndianHelloLoader />`.
+#### No CSS imports. No font setup. Just IndianHelloLoader.
+
+## Features
+
+- 13+ Indian Languages - Hindi, Bengali, Tamil, Telugu, Gujarati, Punjabi, Malayalam, Kannada, Marathi, Oriya, Assamese, Urdu
+- Auto Theme Detection - Respects user's system preference (light/dark)
+- Zero Dependencies - Only requires React
+- Lightweight - Less than 10KB bundled
+- Responsive - Works on all screen sizes
+- Accessible - Screen reader friendly
 
 ## Installation
 
-Install via npm:
+Clone the repository and copy the component files to your project:
 
 ```bash
-npm install indian-hello-loader
+git clone https://github.com/asifjirayat/indian-hello-loader.git
 ```
 
-Or with yarn:
+Then copy the component files from `src/components/` to your project:
 
 ```bash
-yarn add indian-hello-loader
+your-project/
+├── src/
+│ └── components/
+│ ├── IndianGreetings.js
+│ ├── IndianHelloLoader.jsx
+│ ├── IndianHelloLoader.module.css
+│ ├── useFontLoader.js
+│ └── useThemeManager.js
 ```
 
-## Usage
+### Quick Start
 
 Import and use it anywhere in your React app:
 
 ```bash
-import IndianHelloLoader from 'indian-hello-loader';
+import IndianHelloLoader from './components/IndianHelloLoader.jsx';
 
 function App() {
-return <IndianHelloLoader />;
+return (
+<div>
+<IndianHelloLoader />
+</div>
+);
 }
 ```
 
-## Theme Options
+### API Reference
 
-Prop Type Default Description
-`theme: 'auto' | 'light' | 'dark'`
-Controls theme. Auto-detects system preference.
+Props:
 
-### Examples:
+- `theme	'auto' or 'light' or 'dark'` Controls theme. Auto-detects system preference
+
+### Usage Examples
 
 ```bash
-// Auto-detect (default)
+// Auto-detect system theme (default)
 <IndianHelloLoader />
 
 // Force light mode
@@ -55,72 +75,98 @@ Controls theme. Auto-detects system preference.
 <IndianHelloLoader theme="dark" />
 ```
 
-## Customization
+### Customization
 
-### Change the Font
+#### Custom Font
 
-By default, it uses Roboto Condensed (optimized for compact display).
-To change the font, edit `useFontLoader.js` — we recommend only changing to fonts that support Devanagari, Bengali, Gurmukhi, Tamil, Telugu, Kannada, Malayalam, Oriya scripts.
-
-- Example: Use `Poppins`
+By default, it uses Roboto Condensed. To change the font, edit `useFontLoader.js`:
 
 ```bash
 // In src/components/useFontLoader.js
 useFontLoader("Poppins", "400");
 ```
 
-Only use web-safe fonts supporting Indic scripts. Avoid generic fonts like Arial or Helvetica — they won’t render Indian text correctly.
+_Important: Only use fonts that support Indic scripts. Avoid generic fonts like Arial or Helvetica — they won't render Indian text correctly._
 
-## Change Animation Speed
+#### Animation Speed
 
-By default, text changes every `400ms`.
-
-Edit this line in `IndianHelloLoader.jsx`:
+Default transition speed is `400ms`. Edit this line in `IndianHelloLoader.jsx`:
 
 ```bash
-const interval = setInterval(updateText, 200);
+// Change from 400ms to 800ms (0.8 seconds)
+const interval = setInterval(updateText, 800);
 ```
 
-to
-
-```bash
-const interval = setInterval(updateText, 2000); // 2 seconds
-```
-
-## Add or Remove Languages
+#### Add or Remove Languages
 
 Edit `IndianGreetings.js` to customize the list:
 
 ```bash
 export const indianGreetings = [
-  "Hello",
-  "নমস্কাৰ",
-  "السلام علیکم",
-  "नमस्ते",
-  "নমস্কার",
-  "નમસ્તે",
-  "ನಮಸ್ಕಾರ",
-  "नमस्कार",
-  "നമസ്കാരം",
-  "ନମସ୍କାର",
-  "ਸਤ ਸ੍ਰੀ ਅਕਾਲ",
-  "வணக்கம்",
-  "నమస్తే",
-  "आदाब",
+"Hello",
+"নমস্কাৰ",
+"السلام علیکم",
+"नमस्ते",
+"নমস্কার",
+"નમસ્તે",
+"ನಮಸ್ಕಾರ",
+"नमस्कार",
+"നമസ്കാരം",
+"ନମସ୍କାର",
+"ਸਤ ਸ੍ਰੀ ਅਕਾਲ",
+"வணக்கம்",
+"నమస్తే",
+"आदाब",
 ];
 ```
 
-Always test rendered text in browser, some fonts don’t support all scripts.
+Always test rendered text in browser, some fonts don't support all scripts.
+
+#### Supported Languages
+
+The component cycles through these greetings:
+
+- English: Hello
+- Assamese: নমস্কাৰ
+- Urdu: السلام علیکم
+- Hindi: नमस्ते
+- Bengali: নমস্কার
+- Gujarati: નમસ્તે
+- Kannada: ನಮಸ್ಕಾರ
+- Marathi: नमस्कार
+- Malayalam: നമസ്കാരം
+- Oriya: ନମସ୍କାର
+- Punjabi: ਸਤ ਸ੍ਰੀ ਅਕਾਲ
+- Tamil: வணக்கம்
+- Telugu: నమస్తే
+- Urdu (formal): आदाब
 
 ## How It Works
 
-Feature Implementation
+#### Feature Implementation
 
 - Auto Theme Uses prefers-color-scheme + injects --bg-color & --text-color CSS variables
 - No Global Styles Uses CSS Modules (\*.module.css) — zero style conflicts
 - Font Loading Loads font via Google Fonts CDN — no bundling, fast, reliable
 - Text Cycling Pure JavaScript — no animation libraries
 - Zero Dependencies Only uses React — no extra packages
+
+#### Browser Support
+
+- Chrome 60+
+- Firefox 60+
+- Safari 12+
+- Edge 79+
+
+## Framework Compatibility
+
+Works with all React-based frameworks:
+
+- Create React App
+- Next.js
+- Gatsby
+- Vite
+- Remix
 
 ## Local Development
 
@@ -153,10 +199,9 @@ MIT © Asif Jirayat
 
 ## Why This Matters
 
-- Language is identity.
-- This component doesn’t just show text, it says: _“We see you. We honor your language.”_
+Language is identity. This component doesn't just show text, it says: "We see you. We honor your language."
 
-Whether you’re building an app for rural India, a global startup, or an educational tool, this loader brings warmth, inclusivity, and dignity to your UX.
+Whether you're building an app for rural India, a global startup, or an educational tool, this loader brings warmth, inclusivity, and dignity to your UX.
 
 Thank you for using it.
-Let’s make tech more human, one language at a time.
+Let's make tech more human, one language at a time.
