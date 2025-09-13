@@ -13,7 +13,7 @@ const IndianHelloLoader = ({ theme = "auto" }) => {
   // Apply theme only once per prop change
   useThemeManager(theme);
 
-  // Cycle through languages every 200ms
+  // Cycle through languages every 400ms
   useEffect(() => {
     let currentIndex = 0;
 
