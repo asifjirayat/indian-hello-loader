@@ -12,4 +12,5 @@ export const indianGreetings = [
   "ਸਤ ਸ੍ਰੀ ਅਕਾਲ",
   "வணக்கம்",
   "నమస్తే",
+  "आदाब",
 ];
