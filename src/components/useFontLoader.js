@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export const useFontLoader = (fontName = "Poppins", weight = "400") => {
   useEffect(() => {
     // Only encode font name if needed (e.g., for "Roboto Condensed")
-    const encodedFontName = (fontName) => encodeURIComponent(fontName);
+    const encodedFontName = encodeURIComponent(fontName);
 
     const url = `https://fonts.googleapis.com/css2?family=${encodedFontName}:wght@${weight}&display=swap`;
 
