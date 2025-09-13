@@ -126,28 +126,26 @@ Feature Implementation
 
 To test locally during development:
 
-#### Clone this repo.
+#### Clone the repository
 
 ```bash
-Run npm run dev.
-Open http://localhost:5173 — you’ll see the loader in action.
+git clone https://github.com/asifjirayat/indian-hello-loader
+cd indian-hello-loader
 ```
 
-#### Publishing as a Package
-
-This project is already configured for publishing:
-
-- ✅ vite.config.js → builds ESM/CJS
-- ✅ package.json → sets "main", "module", "types"
-- ✅ .npmignore → excludes src/, node_modules/, etc.
-
-#### Build and publish:
+#### Install dependencies
 
 ```bash
-npm run build
-npm pack # Creates .tgz bundle for testing
-npm publish # Publishes to npm
+npm install
 ```
+
+#### Start development server
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser
 
 ## License
 
